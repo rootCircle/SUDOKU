@@ -1,2 +1,2 @@
 # Sudoko
-A sudoko solver (obselete algorithm)
+A Sudoko Solver (Obselete algorithm)
