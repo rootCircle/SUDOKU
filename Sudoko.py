@@ -2,7 +2,7 @@
 """
 Sudoko solver(Under Progresss)
 
-@author: Microsoftlabs
+@author: rootCircle
 """
 
 
