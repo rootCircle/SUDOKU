@@ -54,12 +54,12 @@ def extract_cell(grid, pos):
     """
     cell_start_index = []
     for i in range(2):
-        data = (pos[i]//3)*3
+        data = (pos[i] // 3) * 3
         cell_start_index.append(data)
     row, column = cell_start_index
     cell_val = []
-    for i in range(column, column+3):
-        for j in range(row, row+3):
+    for i in range(column, column + 3):
+        for j in range(row, row + 3):
             cell_val.append(grid[j][i])
     return cell_val
 
@@ -123,14 +123,14 @@ def display_sudoko(grid):
     print("Sudoko\n")
     for i in range(9):
         if i % 3 == 0:
-            print("-"*19)
+            print("-" * 19)
 
         for j in range(9):
             val = grid[j][i]
             print("|" if j % 3 == 0 else " ", end="")
             print(val if val != 0 else " ", end="")
             print("|\n" if j == 8 else "", end="")
-    print("-"*19)
+    print("-" * 19)
     print("End of sudoko!")
     return
 
@@ -167,8 +167,8 @@ def solver_phase_1(grid, super_flag=0):
                 data = []
                 pos = (i, j)
                 for k in range(9):
-                    if check_all(grid, k+1, pos):
-                        data.append(k+1)
+                    if check_all(grid, k + 1, pos):
+                        data.append(k + 1)
                 if len(data) == 1:
                     enter_value(grid, data[0], pos)
                     flag = 1
@@ -215,7 +215,7 @@ def create_cell_order(grid):
     cell = init_cell()
     for i in range(9):
         for j in range(9):
-            pos = (i//3, j//3)
+            pos = (i // 3, j // 3)
             if grid[i][j] != 0:
                 cell[pos] += 1
     return cell
@@ -250,8 +250,8 @@ def solve_cell(grid, cell_pos):
     for k in data:
         counter = val = 0
         pos = (row, column)
-        for i in range(column, column+3):
-            for j in range(row, row+3):
+        for i in range(column, column + 3):
+            for j in range(row, row + 3):
                 if grid[j][i] == 0:
                     if check_all(grid, k, (j, i)):
                         counter += 1
@@ -361,6 +361,6 @@ display_sudoko(grid_1)
 grid_1 = solver(grid_1)
 if not isinstance(grid_1, bool):
     display_sudoko(grid_1)
-    
+
 else:
     print("Unsolvable")
